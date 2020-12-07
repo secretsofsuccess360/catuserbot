@@ -1,5 +1,7 @@
+import re
+
 import requests
-import re 
+
 
 def paste_text(text):
     asciich = ["*", "`", "_"]
