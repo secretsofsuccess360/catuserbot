@@ -1,12 +1,8 @@
 import datetime
-from subprocess import PIPE, Popen
 
 from telethon.tl.tlobject import TLObject
-from telethon.tl.types import MessageEntityMentionName, MessageEntityPre
+from telethon.tl.types import MessageEntityPre
 from telethon.utils import add_surrogate
-
-from ...Config import Config
-from ...utils import edit_delete
 
 
 def mentionuser(name, userid):
@@ -17,10 +13,9 @@ def htmlmentionuser(name, userid):
     return f"<a href='tg://user?id={userid}'>{name}</a>"
 
 
-
-
 # kanged from uniborg @spechide
 # https://github.com/SpEcHiDe/UniBorg/blob/d8b852ee9c29315a53fb27055e54df90d0197f0b/uniborg/utils.py#L250
+
 
 def parse_pre(text):
     text = text.strip()

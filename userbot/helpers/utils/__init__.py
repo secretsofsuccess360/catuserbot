@@ -1,3 +1,3 @@
-from .format import *
-from .extdl import *
 from .events import *
+from .extdl import *
+from .format import *
