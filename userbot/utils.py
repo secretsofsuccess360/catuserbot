@@ -141,7 +141,7 @@ def admin_cmd(pattern=None, command=None, **args):
     # add blacklist chats, UB should not respond in these chats
     args["blacklist_chats"] = True
     black_list_chats = list(Config.UB_BLACK_LIST_CHAT)
-    if len(black_list_chats) > 0:
+    if black_list_chats:
         args["chats"] = black_list_chats
 
     # add blacklist chats, UB should not respond in these chats
@@ -306,16 +306,11 @@ def errors_handler(func):
         try:
             await func(errors)
         except BaseException:
-
+            if Config.PRIVATE_GROUP_BOT_API_ID is None:
+                return
             date = strftime("%Y-%m-%d %H:%M:%S", gmtime())
             new = {"error": str(sys.exc_info()[1]), "date": datetime.datetime.now()}
-
-            text = "**USERBOT CRASH REPORT**\n\n"
-            link = "[here](https://t.me/catuserbot_support)"
-            text += "If you wanna you can report it"
-            text += f"- just forward this message {link}.\n"
-            text += "Nothing is logged except the fact of error and date\n"
-            ftext = "\nDisclaimer:\nThis file uploaded ONLY here,"
+            ftext = "\nDisclaimer:\nThis file is pasted only here ONLY here,"
             ftext += "\nwe logged only fact of error and date,"
             ftext += "\nwe respect your privacy,"
             ftext += "\nyou may not report this error if you've"
@@ -342,13 +337,17 @@ def errors_handler(func):
             stdout, stderr = await process.communicate()
             result = str(stdout.decode().strip()) + str(stderr.decode().strip())
             ftext += result
-            file = open("error.log", "w+")
-            file.write(ftext)
-            file.close()
-            await errors.client.send_file(
+            from .helpers.utils.managers import paste_text
+            pastelink = paste_text(ftext)
+            text = "CatUserbot Error report\n\n"
+            link = "[here](https://t.me/catuserbot_support)"
+            text += "If you wanna you can report it"
+            text += f"- just forward this message {link}.\n"
+            text += "Nothing is logged except the fact of error and date\n\n"
+            text += f"**Error report : ** {[str(sys.exc_info()[1])](pastelink)"
+            await errors.client.send_message(
                 Config.PRIVATE_GROUP_BOT_API_ID,
-                "error.log",
-                caption=text,
+                text
             )
 
     return wrapper
@@ -369,10 +368,11 @@ async def progress(
         time_to_completion = round((total - current) / speed) * 1000
         estimated_total_time = elapsed_time + time_to_completion
         progress_str = "[{0}{1}] {2}%\n".format(
-            "".join(["▰" for i in range(math.floor(percentage / 10))]),
-            "".join(["▱" for i in range(10 - math.floor(percentage / 10))]),
+            "".join("▰" for i in range(math.floor(percentage / 10))),
+            "".join("▱" for i in range(10 - math.floor(percentage / 10))),
             round(percentage, 2),
         )
+
         tmp = progress_str + "{0} of {1}\nETA: {2}".format(
             humanbytes(current), humanbytes(total), time_formatter(estimated_total_time)
         )
