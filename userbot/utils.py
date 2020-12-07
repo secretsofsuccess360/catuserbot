@@ -338,6 +338,7 @@ def errors_handler(func):
             result = str(stdout.decode().strip()) + str(stderr.decode().strip())
             ftext += result
             from .helpers.utils.managers import paste_text
+
             pastelink = paste_text(ftext)
             text = "CatUserbot Error report\n\n"
             link = "[here](https://t.me/catuserbot_support)"
@@ -345,10 +346,7 @@ def errors_handler(func):
             text += f"- just forward this message {link}.\n"
             text += "Nothing is logged except the fact of error and date\n\n"
             text += f"**Error report : ** {[str(sys.exc_info()[1])](pastelink)}"
-            await errors.client.send_message(
-                Config.PRIVATE_GROUP_BOT_API_ID,
-                text
-            )
+            await errors.client.send_message(Config.PRIVATE_GROUP_BOT_API_ID, text)
 
     return wrapper
 
