@@ -344,7 +344,7 @@ def errors_handler(func):
             text += "If you wanna you can report it"
             text += f"- just forward this message {link}.\n"
             text += "Nothing is logged except the fact of error and date\n\n"
-            text += f"**Error report : ** {[str(sys.exc_info()[1])](pastelink)"
+            text += f"**Error report : ** {[str(sys.exc_info()[1])](pastelink)}"
             await errors.client.send_message(
                 Config.PRIVATE_GROUP_BOT_API_ID,
                 text
