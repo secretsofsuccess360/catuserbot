@@ -1,9 +1,4 @@
-import datetime
-from subprocess import PIPE, Popen
-
-from telethon.tl.tlobject import TLObject
-from telethon.tl.types import MessageEntityMentionName, MessageEntityPre
-from telethon.utils import add_surrogate
+from telethon.tl.types import MessageEntityMentionName
 
 from ...Config import Config
 from ...utils import edit_delete
