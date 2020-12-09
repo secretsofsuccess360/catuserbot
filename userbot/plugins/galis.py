@@ -23,8 +23,8 @@ async def fuckedd(abusehard):
     await edit_or_reply(abusehard, reply_text)
 
 
-@bot.on(admin_cmd(outgoing=True, pattern="rendi$"))
-@bot.on(sudo_cmd(pattern="rendi$", allow_sudo=True))
+@bot.on(admin_cmd(outgoing=True, pattern="randi$"))
+@bot.on(sudo_cmd(pattern="randi$", allow_sudo=True))
 async def metoo(e):
     txt = random.choice(catmemes.RENDISTR)
     await edit_or_reply(e, txt)
@@ -214,8 +214,8 @@ async def _(event):
         await catevent.edit(animation_chars[i % 4])
 
 
-@bot.on(admin_cmd(outgoing=True, pattern=f"nakal$"))
-@bot.on(sudo_cmd(pattern=f"nakal$", allow_sudo=True))
+@bot.on(admin_cmd(outgoing=True, pattern=f"nikal$"))
+@bot.on(sudo_cmd(pattern=f"nikal$", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -295,7 +295,7 @@ CMD_HELP.update(
         "galis": "__**PLUGIN NAME :** Galis__\
 \n\n📌** CMD ➥** `.fk` <text>\
 \n**USAGE   ➥  **Give someone all galis.\
-\n\n📌** CMD ➥** `.abuse`  `.abusehard`  `.rendi`  `.fuck`  `.thanos`  `.gf`  `.chod`  `.rape`  `.kiss`  `.fuk`  `.sex`  `.nakal`  `.gaali`  `.gali`  `.egaali`  `.bsdk`\n\n**USAGE   ➥  **You already got that! Ain't?.\
+\n\n📌** CMD ➥** `.abuse`  `.abusehard`  `.randi`  `.fuck`  `.thanos`  `.gf`  `.chod`  `.rape`  `.kiss`  `.fuk`  `.sex`  `.nikal`  `.gaali`  `.gali`  `.egaali`  `.bsdk`\n\n**USAGE   ➥  **You already got that! Ain't?.\
 "
     }
 )
