@@ -4,9 +4,8 @@ import requests
 from telethon import functions
 
 from ..utils import admin_cmd, edit_or_reply, sudo_cmd
-from . import ALIVE_NAME, CMD_HELP, CMD_LIST, SUDO_LIST, yaml_format
+from . import CMD_HELP, CMD_LIST, SUDO_LIST, yaml_format, mention
 
-DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "cat"
 
 HELPTYPE = Config.HELP_INLINETYPE or True
 
@@ -20,7 +19,7 @@ async def cmd_list(event):
     input_str = event.pattern_match.group(1)
     if input_str == "text":
         string = (
-            "Total {count} commands found in {plugincount} plugins of catuserbot\n\n"
+            "Total {count} commands found in {plugincount} plugins of userbot\n\n"
         )
         catcount = 0
         plugincount = 0
@@ -65,7 +64,7 @@ async def cmd_list(event):
             await event.delete()
     else:
         if HELPTYPE is True:
-            help_string = f"Userbot Helper. Provided by {DEFAULTUSER} to reveal all the plugins\
+            help_string = f"Userbot Helper. Provided by {mention} to reveal all the plugins\
                           \nCheck `.help plugin name` for commands, in case popup doesn't appear.\
                           \nCheck `.info plugin name` for usage of thoose plugins and commands"
             tgbotusername = Config.TG_BOT_USER_NAME_BF_HER
@@ -90,7 +89,7 @@ async def cmd_list(event):
 async def info(event):
     input_str = event.pattern_match.group(1)
     if input_str == "text":
-        string = "Total {count} commands found in {plugincount} sudo plugins of catuserbot\n\n"
+        string = "Total {count} commands found in {plugincount} sudo plugins of userbot\n\n"
         catcount = 0
         plugincount = 0
         for i in sorted(SUDO_LIST):
@@ -220,16 +219,12 @@ async def _(event):
 CMD_HELP.update(
     {
         "help": """**Plugin : **`help`
-
   •  **Syntax : **`.help/.help plugin_name`
   •  **Function : **__If you just type .help then shows you help menu, if plugin name is given then shows you only commands in thst plugin and if you use `.help text` then shows you all commands in your userbot__
-
   •  **Syntax : **`.info/.info plugin_name`
   •  **Function : **__To get details/information/usage of that plugin__
-
   •  **Syntax : **`.dc`
   •  **Function : **__Shows your dc id and dc ids list__
-
   •  **Syntax : **`.setinline (true|false)`
   •  **Function : **__Sets help menu either in inline or text format__"""
     }
