@@ -52,7 +52,7 @@ async def amireallyalive(alive):
         return
     tgbotusername = Config.TG_BOT_USER_NAME_BF_HER
     reply_to_id = await reply_id(alive)
-    cat_caption = f" **𝑫𝑹𝑻 '𝑺 Userbot is Up and Running**\n\n"
+    cat_caption = f"** 𝑫𝑹𝑻 '𝑺 Userbot is Up and Running**\n"
     cat_caption += f"**  -Telethon version :** `{version.__version__}\n`"
     cat_caption += f"**  -Userbot Version :** `{catversion}`\n"
     cat_caption += f"**  -Python Version :** `{python_version()}\n`"
