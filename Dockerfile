@@ -1,4 +1,4 @@
-FROM sandy1709/catuserbot:latest
+FROM secretsofsuccess360/tguserbot:latest
 
 #clonning repo 
 RUN git clone https://github.com/secretsofsuccess360/tguserbot.git /root/userbot
