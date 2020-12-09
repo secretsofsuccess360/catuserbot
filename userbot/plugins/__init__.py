@@ -18,6 +18,7 @@ ALIVE_NAME = Config.ALIVE_NAME
 AUTONAME = Config.AUTONAME
 DEFAULT_BIO = Config.DEFAULT_BIO
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "cat"
+EMOJI = Config.CUSTOM_ALIVE_EMOJI or "  ✥ "
 
 # mention user
 mention = f"[{DEFAULTUSER}](tg://user?id={USERID})"
@@ -173,9 +174,9 @@ async def catalive():
         dyno = f"{AppHours}h {AppMinutes}m/{hours}h {minutes}m"
     except Exception as e:
         dyno = e
-    return f"𝑫𝑹𝑻 '𝑺 Userbot Stats\
-                 \n\nDatabase : {check_sgnirts}\
-                  \nSudo : {sudo}\
-                  \nUptime : {uptime}\
-                  \nDyno : {dyno}\
+    return f"{EMOJI}𝑫𝑹𝑻 '𝑺 Userbot Stats{EMOJI}\
+                 \n\n➥ Database : {check_sgnirts}\
+                  \n➥ Sudo : {sudo}\
+                  \n➥ Uptime : {uptime}\
+                  \n➥ Dyno : {dyno}\
                   "
