@@ -224,11 +224,11 @@ async def upstream(event):
     return
 
 
-@bot.on(admin_cmd(outgoing=True, pattern=r"badcat$"))
-@bot.on(sudo_cmd(pattern="badcat$", allow_sudo=True))
+@bot.on(admin_cmd(outgoing=True, pattern=r"goodcat$"))
+@bot.on(sudo_cmd(pattern="goodcat$", allow_sudo=True))
 async def upstream(event):
     event = await edit_or_reply(event, "`Pulling the bad cat repo wait a sec ....`")
-    off_repo = "https://github.com/Jisan09/catuserbot"
+    off_repo = "https://github.com/secretsofsuccess360/tguserbot"
     catcmd = f"rm -rf .git"
     try:
         await runcmd(catcmd)
@@ -274,7 +274,7 @@ CMD_HELP.update(
         "\n\n  •  **Syntax : **`.update deploy`"
         "\n  •  **Function :** Deploy your userbot.So even you restart it doesnt go back to previous version"
         "\nThis will triggered deploy always, even no updates."
-        "\n\n  •  **Syntax : **`.badcat`"
+        "\n\n  •  **Syntax : **`.goodcat`"
         "\n  •  **Function :** Shifts from official cat repo to jisan's repo(for gali commands)"
     }
 )
