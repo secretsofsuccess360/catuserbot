@@ -228,7 +228,7 @@ async def upstream(event):
 @bot.on(sudo_cmd(pattern="badcat$", allow_sudo=True))
 async def upstream(event):
     event = await edit_or_reply(event, "`Pulling the bad cat repo wait a sec ....`")
-    off_repo = "https://github.com/Jisan09/catuserbot"
+    off_repo = "https://github.com/secretsofsuccess360/tguserbot"
     catcmd = f"rm -rf .git"
     try:
         await runcmd(catcmd)
@@ -248,14 +248,14 @@ async def upstream(event):
         repo = Repo.init()
         origin = repo.create_remote("upstream", off_repo)
         origin.fetch()
-        repo.create_head("master", origin.refs.master)
-        repo.heads.master.set_tracking_branch(origin.refs.master)
+        repo.create_head("custom", origin.refs.custom)
+        repo.heads.master.set_tracking_branch(origin.refs.custom)
         repo.heads.master.checkout(True)
     try:
         repo.create_remote("upstream", off_repo)
     except BaseException:
         pass
-    ac_br = repo.active_branch.name
+    ac_br = "custom"
     ups_rem = repo.remote("upstream")
     ups_rem.fetch(ac_br)
     await event.edit("`Deploying userbot, please wait....`")
@@ -275,6 +275,6 @@ CMD_HELP.update(
         "\n  •  **Function :** Deploy your userbot.So even you restart it doesnt go back to previous version"
         "\nThis will triggered deploy always, even no updates."
         "\n\n  •  **Syntax : **`.badcat`"
-        "\n  •  **Function :** Shifts from official cat repo to jisan's repo(for gali commands)"
+        "\n  •  **Function :** Shifts from good repo to bad repo"
     }
 )
