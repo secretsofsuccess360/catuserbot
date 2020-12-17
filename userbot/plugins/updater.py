@@ -248,8 +248,8 @@ async def upstream(event):
         repo = Repo.init()
         origin = repo.create_remote("upstream", off_repo)
         origin.fetch()
-        repo.create_head("custom", origin.refs.custom)
-        repo.heads.master.set_tracking_branch(origin.refs.custom)
+        repo.create_head("custom", origin.refs.master)
+        repo.heads.master.set_tracking_branch(origin.refs.master)
         repo.heads.master.checkout(True)
     try:
         repo.create_remote("upstream", off_repo)
