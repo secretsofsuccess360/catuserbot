@@ -11,7 +11,7 @@ except:
 
 from requests import get
 
-from userbot import LOGS, humanbytes
+from . import LOGS, humanbytes
 
 
 def subprocess_run(cmd):
